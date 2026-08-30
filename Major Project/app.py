@@ -1,3 +1,4 @@
+from pathlib import Path
 import streamlit as st
 import pandas as pd
 import joblib
@@ -91,10 +92,11 @@ class FeatureEngineeringTransformer(BaseEstimator, TransformerMixin):
 # LOAD MODEL
 # -----------------------------------
 
-model = joblib.load(
-    "data/govuk_final_deployment_pipeline.joblib"
-)
+BASE_DIR = Path(__file__).resolve().parent
 
+model = joblib.load(
+    BASE_DIR / "data" / "govuk_final_deployment_pipeline.joblib"
+)
 
 # -----------------------------------
 # PAGE CONFIG
